@@ -13,8 +13,9 @@ const Formulario=(pacientes, setPacientes)=>{
   const generarId=()=>{
     const random=Math.random().toString(36).substr(2);
     const fecha=Date.now().toString(36);
-  }
     return random+fecha;
+  }
+  
 
   const handleSubmit=( e)=>{
     e.preventDefault();
@@ -64,7 +65,7 @@ const Formulario=(pacientes, setPacientes)=>{
 
         <div className="mb-5">
 
-            <label htmlfor="mascota" className="block text-gray-700 uppercase font-bold">Nombre Mascota</label>
+            <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">Nombre Mascota</label>
 
             <input id="mascota" type="text"placeholder="Nombre de la mascota" 
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
@@ -73,7 +74,7 @@ const Formulario=(pacientes, setPacientes)=>{
         </div>
 
         <div className="mb-5" >
-            <label htmlfor="propietario" className="block text-gray-700 uppercase font-bold">Nombre Propietario</label>
+            <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">Nombre Propietario</label>
 
             <input id="mascota" type="text"placeholder="Nombre del propietario" 
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
@@ -81,7 +82,7 @@ const Formulario=(pacientes, setPacientes)=>{
             onChange={ (e)=>setPropietario (e.target.value) } /> 
         </div>
  <div className="mb-5" >
-            <label htmlfor="email" className="block text-gray-700 uppercase font-bold">Email contacto propietario</label>
+            <label htmlFor="email" className="block text-gray-700 uppercase font-bold">Email contacto propietario</label>
 
             <input id="mascota" type="text"placeholder="Email" 
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
@@ -90,7 +91,7 @@ const Formulario=(pacientes, setPacientes)=>{
         </div>
 
         <div className="mb-5" >
-            <label htmlfor="alta" className="block text-gray-700 uppercase font-bold">Alta</label>
+            <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">Alta</label>
 
             <input id="alta" type="date"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
@@ -99,7 +100,7 @@ const Formulario=(pacientes, setPacientes)=>{
         </div>
         
         <div className="mb-5" >
-            <label htmlfor="altal" className="block text-gray-700 uppercase font-bold">Sintomas</label>
+            <label htmlFor="altal" className="block text-gray-700 uppercase font-bold">Sintomas</label>
 
            <textarea id="sintomas" className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"    placeholder="Describe los sintomas" 
             value={sintomas} 
