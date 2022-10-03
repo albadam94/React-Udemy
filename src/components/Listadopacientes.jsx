@@ -1,4 +1,5 @@
 import Paciente from "./Paciente"
+
 const ListadoPacientes=()=>{
     return(
         <div className="md:w-1/2 lg:w-2/5 md:h-screen overflow-y-scroll">
@@ -10,6 +11,7 @@ const ListadoPacientes=()=>{
        <Paciente/>
        <Paciente/>
        <Paciente/>
+       
         </div>
     )
 }
