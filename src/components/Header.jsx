@@ -1,4 +1,6 @@
-function Header( ){
+function Header(props ){
+
+    console.log(props)
 
     return(
         <>
