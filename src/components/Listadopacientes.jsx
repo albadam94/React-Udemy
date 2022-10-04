@@ -1,6 +1,6 @@
 import Paciente from "./Paciente"
 
-const ListadoPacientes=(pacientes)=>{
+const ListadoPacientes=(pacientes, setPaciente)=>{
 
     
 
@@ -18,6 +18,7 @@ const ListadoPacientes=(pacientes)=>{
                     <Paciente 
                     key={paciente.id }
                     paciente={paciente} 
+                    setPaciente={setPaciente}
                     />
                     ))}
              
@@ -33,7 +34,7 @@ const ListadoPacientes=(pacientes)=>{
                 </>
              )}
     
-
+                    <Paciente />
       
        
        

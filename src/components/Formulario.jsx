@@ -108,8 +108,8 @@ const Formulario=(pacientes, setPacientes)=>{
        
         </div>
         <input type="submit" className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-        value="Agregar Paciente" 
-        />
+        value="Agregar Paciente" onClick={handleSubmit} />
+        
       </form>
 
 
