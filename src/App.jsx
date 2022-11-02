@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import Header from './components/Header'
 import Modal from './components/Modal'
 import ListadoGastos from './components/ListadoGastos'
@@ -13,7 +12,7 @@ const [ isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 
 const[modal, setModal] = useState(false)
 const[animarModal, setAnimarModal] = useState(false)
-const [gastos, setGastos] = useState([])
+const [gastos, setGastos] = useState([ ])
 const handleNuevoGasto = ( ) => {
   setModal(true)
 
@@ -32,7 +31,7 @@ const guardarGasto = gasto => {
 }
 
   return (
-    <div>
+    <div className={modal ?  'fijar' : ' '}>
       <Header 
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
