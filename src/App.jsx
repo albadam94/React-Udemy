@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Modal from './components/Modal'
 import ListadoGastos from './components/ListadoGastos'
@@ -6,13 +6,22 @@ import IconoNuevoGasto from'./img/nuevo-gasto.svg'
 import{generarId} from './helpers'
 
 function App() {
- 
-const [presupuesto, setPresupuesto] = useState(0)
-const [ isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 
+const [gastos, setGastos] = useState([ ])
+ const [presupuesto, setPresupuesto] = useState(0)
+const [ isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 const[modal, setModal] = useState(false)
 const[animarModal, setAnimarModal] = useState(false)
-const [gastos, setGastos] = useState([ ])
+
+const [ gastoEditar, setGastoEditar] = useState({ })
+
+useEffect(() => {
+    if (Object.keys(gastoEditar).length > 0) {
+        setModal(true)
+        setAnimarModal(true)
+    }
+}, [gastoEditar])
+
 const handleNuevoGasto = ( ) => {
   setModal(true)
 
@@ -33,6 +42,7 @@ const guardarGasto = gasto => {
   return (
     <div className={modal ?  'fijar' : ' '}>
       <Header 
+        gastos={gastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
@@ -44,6 +54,7 @@ const guardarGasto = gasto => {
 
           <ListadoGastos
           gastos={gastos}
+          setGastoEditar={setGastoEditar}
           />
         </main>
       <div className="nuevo-gasto">
