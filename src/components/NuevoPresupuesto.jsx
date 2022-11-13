@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import Mensaje from './Mensaje'
+import Modal from './Modal'
 
 
 const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) => {
@@ -12,6 +13,7 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) 
             setMensaje('El presupuesto es incorrecto')
 
             return
+        
         }
             setMensaje( ' ')
             setIsValidPresupuesto=(true)
@@ -19,7 +21,7 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) 
         }
     
 
-
+      
 
     return(
         <div className="contenedor-presupuesto contenedor sombra">
@@ -40,6 +42,8 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) 
                 type="submit" value="Añadir"/>
 
                 {mensaje && <Mensaje tipo="error">{ mensaje}</Mensaje>}
+            
+
 
 
             </form>

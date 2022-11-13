@@ -7,8 +7,13 @@ import{generarId} from './helpers'
 
 function App() {
 
-const [gastos, setGastos] = useState([ ])
- const [presupuesto, setPresupuesto] = useState(0)
+const [gastos, setGastos] = useState(
+  localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : [])
+ const [presupuesto, setPresupuesto] = useState(
+  localStorage.getItem('presupuesto') ?? 0
+ )
+
+ 
 const [ isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 const[modal, setModal] = useState(false)
 const[animarModal, setAnimarModal] = useState(false)
@@ -21,6 +26,22 @@ useEffect(() => {
         setAnimarModal(true)
     }
 }, [gastoEditar])
+
+useEffect(() => {
+  localStorage.setItem('presupuesto', presupuesto ?? 0)
+}, [presupuesto])
+
+
+useEffect(() => {
+  const presupuestoLS = Number(localStorage.getItem('presupuesto'))??0
+  if (presupuestoLS > 0) {
+    setIsValidPresupuesto(true)
+  }
+}, [presupuesto])
+
+useEffect(() => {
+  localStorage.setItem('gastos', JSON.stringify(gastos)??[ ])
+}, [gastos])
 
 const handleNuevoGasto = ( ) => {
   setModal(true)
@@ -35,6 +56,8 @@ const guardarGasto = gasto => {
   //Actualizar
   const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
   setGastos(gastosActualizados);
+  setGastoEditar({ })
+  }else{
   // Nuevo gasto
   gasto.id = generarId( )
   gasto.fecha=Date.now( );
@@ -84,6 +107,7 @@ const eliminarGasto = id => {
       setAnimarModal={setAnimarModal}
       guardarGasto={guardarGasto}
       gastoEditar={gastoEditar}
+      setGastoEditar={setGastoEditar}
       />}
     
     </div>
