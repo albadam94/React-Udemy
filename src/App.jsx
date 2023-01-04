@@ -1,50 +1,56 @@
-import { useState, useEffect }from 'react';
-import Header from './components/Header'
+import React from 'react'
+import styled from '@emotion/styled' 
+import ImagenCripto from './img/Imagen-criptos.png'
 import Formulario from './components/Formulario'
-import Listadopacientes from './components/Listadopacientes'
+
+const Contenedor=styled.div
+`max-width: 900px;
+margin: 0 auto;
+width: 90%;
+@media (min-width:992px){
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+}
+`
+const Imagen=styled.img
+`max-width: 400px;
+width: 80%;
+margin: 100px auto 0 auto;
+display: block;
+`
+
+const Heading=styled.h1 
+`font-family:'poppins', sans-serif;
+color: #FFF;
+text-align: center;
+font-weight: 600;
+margin-top: 80px;
+margin-bottom: 50px;
+font-size: 34px;
+&::after{
+  content: '';
+  width: 100px;
+  height: 6px;
+  background-color: #66A2FE;
+  display: block;
+  margin: 0 auto;
+}
+`
+
 function App() {
 
-  const [pacientes, setPacientes] = useState([]);
-  const [paciente, setPaciente] = useState({});
-
-  useEffect(() => {
-    const obtenerLS = () => {
-      const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
-      setPacientes(pacientesLS)
-    }
-    obtenerLS();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('pacientes', JSON.stringify( pacientes ));
-  }, [pacientes])
-
-  const eliminarPaciente = id => {
-    const pacientesActualizados = pacientes.filter( paciente => paciente.id !== id);
-    setPacientes(pacientesActualizados)
-  }
 
   return (
-    <div className="container mx-auto mt-20">
-
-    <Header/>
-    
-    <div className="mt-12 md:flex">
-        <Formulario
-          pacientes={pacientes}
-          setPacientes={setPacientes}
-          paciente={paciente}
-          setPaciente={setPaciente}
-        />
-        <Listadopacientes 
-          pacientes={pacientes}
-          setPaciente={setPaciente}
-          eliminarPaciente={eliminarPaciente}
-          
-          
-        /> 
-    </div>
-    </div>
+  <Contenedor>
+      <Imagen src={ImagenCripto} alt="Imagen Cripto"/>
+      <div>
+        <Heading>Cotiza criptomonedas al instante</Heading>
+        {/*<Formulario/>*/}
+      </div>
+      
+   </Contenedor>
+   
   )
 }
 
